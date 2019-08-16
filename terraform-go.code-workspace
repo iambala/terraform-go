@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "examples"
+		},
+		{
+			"path": "gohcl"
+		},
+		{
+			"path": "tfgen"
+		}
+	],
+	"settings": {}
+}
