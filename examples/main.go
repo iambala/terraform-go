@@ -39,5 +39,12 @@ func main() {
 	jsont, _ := json.Marshal(ddb)
 	fmt.Println(string(jsont))
 
+	myVar := tfgen.Var{
+		Name:    "testVar",
+		Default: "testVal",
+	}
+
+	tf.AddResource(myVar)
+
 	tf.SaveFile()
 }

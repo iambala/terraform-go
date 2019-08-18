@@ -18,10 +18,8 @@ github.com/hashicorp/go-multierror v0.0.0-20180717150148-3d5d8f294aa0/go.mod h1:
 github.com/hashicorp/hcl2 v0.0.0-20190809210004-72d32879a5c5 h1:OFoLPLBMKaHdNqbf+YRWnPh38QB7VJFlm6i9ULrZ8bI=
 github.com/hashicorp/hcl2 v0.0.0-20190809210004-72d32879a5c5/go.mod h1:FSQTwDi9qesxGBsII2VqhIzKQ4r0bHvBkOczWfD7llg=
 github.com/hpcloud/tail v1.0.0/go.mod h1:ab1qPbhIpdTxEkNHXyeSf5vhxWSCs/tWer42PpOxQnU=
-github.com/iambala/terraform-go v0.0.0-20190818063326-b74ed013cc4a h1:Sqv60Rx/4KRsB31SkLpFRfqJ02Hpr+fERxGPP9VCGhE=
-github.com/iambala/terraform-go v0.0.0-20190818063326-b74ed013cc4a/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
-github.com/iambala/terraform-go v0.0.0-20190818063642-341d31d56287 h1:4ZoI3eXuRwG1jCb6BBbkWvILtlp5Q4xjZqMXeKapZzg=
-github.com/iambala/terraform-go v0.0.0-20190818063642-341d31d56287/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
+github.com/iambala/terraform-go v0.0.0-20190818065705-6f9c60aea2af h1:XrxlqgbRM4cbnu6JYnhu4F6X6ZIe6ko1ce9Lbm2XcWo=
+github.com/iambala/terraform-go v0.0.0-20190818065705-6f9c60aea2af/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
