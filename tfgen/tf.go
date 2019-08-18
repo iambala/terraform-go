@@ -10,14 +10,22 @@ import (
 )
 
 type tf struct {
-	Main     *hclwrite.File
-	MainBody *hclwrite.Body
+	Main       *hclwrite.File
+	MainBody   *hclwrite.Body
+	Var        *hclwrite.File
+	VarBody    *hclwrite.Body
+	Output     *hclwrite.File
+	OutputBody *hclwrite.Body
 }
 
 func NewTf() tf {
 	var t tf
 	t.Main = hclwrite.NewEmptyFile()
 	t.MainBody = t.Main.Body()
+	t.Var = hclwrite.NewEmptyFile()
+	t.VarBody = t.Main.Body()
+	t.Output = hclwrite.NewEmptyFile()
+	t.OutputBody = t.Main.Body()
 	return t
 }
 
@@ -42,12 +50,29 @@ func extractResourceName(arn string) string {
 }
 
 func (t tf) SaveFile() {
-	f, err := os.Create("main.tf")
+	//create and save Main.tf
+	mf, err := os.Create("main.tf")
 	check(err)
-	defer f.Close()
-	fw := bufio.NewWriter(f)
-	t.Main.WriteTo(fw)
-	fw.Flush()
+	defer mf.Close()
+	mfw := bufio.NewWriter(mf)
+	t.Main.WriteTo(mfw)
+	mfw.Flush()
+
+	//create and save Variables.tf
+	vf, err := os.Create("variables.tf")
+	check(err)
+	defer vf.Close()
+	vfw := bufio.NewWriter(vf)
+	t.Var.WriteTo(vfw)
+	vfw.Flush()
+
+	//create and save Outputs.tf
+	of, err := os.Create("outputs.tf")
+	check(err)
+	defer of.Close()
+	vfw := bufio.NewWriter(of)
+	t.Output.WriteTo(ofw)
+	ofw.Flush()
 }
 
 func (t tf) AddResource(resource interface{}) {
@@ -72,7 +97,7 @@ func (t tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SnsSubscription), body)
 	case Var:
-		block = t.MainBody.AppendNewBlock("variable", []string{resource.(Var).Name})
+		block = t.VarBody.AppendNewBlock("variable", []string{resource.(Var).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Var), body)
 	default:
