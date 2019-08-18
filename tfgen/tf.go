@@ -71,6 +71,10 @@ func (t tf) AddResource(resource interface{}) {
 		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic_subscription", name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SnsSubscription), body)
+	case Var:
+		block = t.MainBody.AppendNewBlock("resource", []string{"variable"})
+		body = block.Body()
+		gohcl.EncodeIntoBody(resource.(Var), body)
 	default:
 		fmt.Println("error")
 	}
