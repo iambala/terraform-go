@@ -23,9 +23,9 @@ func NewTf() tf {
 	t.Main = hclwrite.NewEmptyFile()
 	t.MainBody = t.Main.Body()
 	t.Var = hclwrite.NewEmptyFile()
-	t.VarBody = t.Main.Body()
+	t.VarBody = t.Var.Body()
 	t.Output = hclwrite.NewEmptyFile()
-	t.OutputBody = t.Main.Body()
+	t.OutputBody = t.Output.Body()
 	return t
 }
 
