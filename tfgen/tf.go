@@ -70,7 +70,7 @@ func (t tf) SaveFile() {
 	of, err := os.Create("outputs.tf")
 	check(err)
 	defer of.Close()
-	vfw := bufio.NewWriter(of)
+	ofw := bufio.NewWriter(of)
 	t.Output.WriteTo(ofw)
 	ofw.Flush()
 }
