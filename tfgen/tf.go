@@ -15,7 +15,7 @@ type tf struct {
 }
 
 func NewTf() tf {
-	var t t
+	var t tf
 	t.Main = hclwrite.NewEmptyFile()
 	t.MainBody = t.Main.Body()
 	return t
@@ -33,7 +33,7 @@ func check(e error) {
 	}
 }
 
-func extractResourceName() string {
+func extractResourceName(arn string) string {
 	components, err := awsarn.Parse(arn)
 	if err != nil {
 		panic(err)
