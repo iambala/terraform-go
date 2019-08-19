@@ -34,7 +34,6 @@ func main() {
 	ddb.Tags["mytag1"] = "sdafads"
 	ddb.Tags["mytag1"] = "sdfsf"
 
-	tf.AddResource(ddb)
 	tf.AddResource(sqs)
 	jsont, _ := json.Marshal(ddb)
 	fmt.Println(string(jsont))

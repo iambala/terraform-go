@@ -26,6 +26,8 @@ github.com/iambala/terraform-go v0.0.0-20190818072210-7018491c06ab h1:C0QAFPNkWt
 github.com/iambala/terraform-go v0.0.0-20190818072210-7018491c06ab/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
 github.com/iambala/terraform-go v0.0.0-20190818072346-f2fd7de11f9c h1:ilmIq0r3lYSE5eYKeqEYJH4verOaJEmpxrd+BVDs9tM=
 github.com/iambala/terraform-go v0.0.0-20190818072346-f2fd7de11f9c/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
+github.com/iambala/terraform-go v0.0.0-20190818072827-7fb9ff093730 h1:DAx0GwmDtsY2XD/3vTN8lTHNBaB+UUmoSAo8fl1LinE=
+github.com/iambala/terraform-go v0.0.0-20190818072827-7fb9ff093730/go.mod h1:WLn9ILHwhUm1wqApR1l/e+8TPbgKTPE7BlXDfk1OD2c=
 github.com/jessevdk/go-flags v1.4.0/go.mod h1:4FA24M0QyGHXBuZZK/XkWh8h0e1EYbRYJSGM75WSRxI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=

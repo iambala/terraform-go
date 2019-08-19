@@ -100,6 +100,10 @@ func (t tf) AddResource(resource interface{}) {
 		block = t.VarBody.AppendNewBlock("variable", []string{resource.(Var).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Var), body)
+	case Provider:
+		block = t.MainBody.AppendNewBlock("provider", []string{resource.(Provider).Name})
+		body = block.Body()
+		gohcl.EncodeIntoBody(resource.(Provider), body)
 	default:
 		fmt.Println("error")
 	}

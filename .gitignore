@@ -4,3 +4,5 @@ examples/outputs.tf
 examples/variables.tf
 examples/terraform-go-examples
 examples/terraform-go-examples
+examples/.terraform/
+examples/.terraform/
