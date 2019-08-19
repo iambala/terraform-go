@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "tfgen"
+		},
+		{
+			"path": "awsarn"
 		}
 	],
 	"settings": {}

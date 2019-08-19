@@ -3,8 +3,8 @@ package tfgen
 import (
 	"bufio"
 	"fmt"
-	"github.com/gigawattio/awsarn"
 	"github.com/hashicorp/hcl2/hclwrite"
+	"github.com/iambala/terraform-go/awsarn"
 	"github.com/iambala/terraform-go/gohcl"
 	"os"
 )
@@ -92,7 +92,7 @@ func (t tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SNS), body)
 	case SnsSubscription:
-		name := fmt.Sprintf("%s-%s", extractResourceName(resource.(SnsSubscription).TopicArn), extractResourceName(resource.(SnsSubscription).Endpoint))
+		name := fmt.Sprintf("%s-sub-%s", extractResourceName(resource.(SnsSubscription).TopicArn), extractResourceName(resource.(SnsSubscription).Endpoint))
 		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic_subscription", name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SnsSubscription), body)

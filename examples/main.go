@@ -43,7 +43,12 @@ func main() {
 		Default: "testVal",
 	}
 
+	provider := tfgen.Provider{
+		Name:   "aws",
+		Region: "eu-west-1",
+	}
 	tf.AddResource(myVar)
+	tf.AddResource(provider)
 
 	tf.SaveFile()
 }
