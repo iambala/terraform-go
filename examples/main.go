@@ -39,16 +39,29 @@ func main() {
 	fmt.Println(string(jsont))
 
 	myVar := tfgen.Var{
-		Name:    "testVar",
-		Default: "testVal",
+		Name:    "region",
+		Default: "eu-west-1",
+	}
+	account_id := tfgen.Var{
+		Name:    "account_id",
+		Default: "12345678910",
 	}
 
 	provider := tfgen.Provider{
 		Name:   "aws",
 		Region: "eu-west-1",
 	}
+	snssub := tfgen.SnsSubscription{
+		TopicArn: "arn:aws:sns:${var.region}:${var.account_id}:my_corporate_topic",
+		Endpoint: "arn:aws:sqs:${var.region}:${var.account_id}:queuename",
+		Protocol: "sqs",
+	}
+
 	tf.AddResource(myVar)
 	tf.AddResource(provider)
+	tf.AddResource(account_id)
+	tf.AddResource(snssub)
 
 	tf.SaveFile()
+	cleanupFile()
 }
