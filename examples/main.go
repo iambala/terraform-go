@@ -17,8 +17,13 @@ func main() {
 	sqs.Tags["myTag1"] = "myTagValue1"
 	var ddb tfgen.DynamoDB
 	ddb.Name = "mytable"
-	ddb.GlobalSecondaryIndex = &tfgen.GlobalSecondaryIndex{
-		Name: "test",
+	ddb.GlobalSecondaryIndex = []tfgen.GlobalSecondaryIndex{
+		tfgen.GlobalSecondaryIndex{
+			Name: "test",
+		},
+		tfgen.GlobalSecondaryIndex{
+			Name: "test",
+		},
 	}
 	ddb.Attributes = []tfgen.Attribute{
 		tfgen.Attribute{
