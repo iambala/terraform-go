@@ -1,16 +1,16 @@
 package tfgen
 
 type DynamoDB struct {
-	Name                 string                `yaml:"name" hcl:"name"`
-	BillingMode          string                `yaml:"billingMode" hcl:"billing_mode,omitempty"`
-	ReadCapacity         int64                 `yaml:"readCapacity" hcl:"read_capacity,omitempty"`
-	WriteCapacity        int64                 `yaml:"writeCapacity" hcl:"write_capacity,omitempty"`
-	HashKey              string                `yaml:"hashKey" hcl:"hash_key,omitempty"`
-	RangeKey             string                `yaml:"rangeKey" hcl:"range_key,omitempty"`
-	Attributes           []Attribute           `yaml:"attributes" hcl:"attribute,block"`
-	TTL                  *Ttl                  `yaml:"ttl" hcl:"ttl,block"`
-	GlobalSecondaryIndex *GlobalSecondaryIndex `yaml:"globalSecondaryIndex" hcl:"global_secondary_index,block"`
-	Tags                 map[string]string     `yaml:"tags" hcl:"tags,omitempty"`
+	Name                 string                 `yaml:"name" hcl:"name"`
+	BillingMode          string                 `yaml:"billingMode" hcl:"billing_mode,omitempty"`
+	ReadCapacity         int64                  `yaml:"readCapacity" hcl:"read_capacity,omitempty"`
+	WriteCapacity        int64                  `yaml:"writeCapacity" hcl:"write_capacity,omitempty"`
+	HashKey              string                 `yaml:"hashKey" hcl:"hash_key,omitempty"`
+	RangeKey             string                 `yaml:"rangeKey" hcl:"range_key,omitempty"`
+	Attributes           []Attribute            `yaml:"attributes" hcl:"attribute,block"`
+	TTL                  *Ttl                   `yaml:"ttl" hcl:"ttl,block"`
+	GlobalSecondaryIndex []GlobalSecondaryIndex `yaml:"globalSecondaryIndex" hcl:"global_secondary_index,block"`
+	Tags                 map[string]string      `yaml:"tags" hcl:"tags,omitempty"`
 }
 
 type Attribute struct {
