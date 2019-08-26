@@ -26,9 +26,9 @@ type Ttl struct {
 type GlobalSecondaryIndex struct {
 	Name             string   `yaml:"name" hcl:"name"`
 	HashKey          string   `yaml:"hashKey" hcl:"hash_key"`
-	RangeKey         string   `yaml:"rangeKey" hcl:"range_key"`
-	WriteCapacity    int64    `yaml:"writeCapacity" hcl:"write_capacity"`
-	ReadCapacity     int64    `yaml:"readCapacity" hcl:"read_capacity"`
-	ProjectionType   string   `yaml:"projectionType" hcl:"projection_type"`
-	NonKeyAttributes []string `yaml:"nonKeyAttributes" hcl:"non_key_attributes"`
+	RangeKey         string   `yaml:"rangeKey" hcl:"range_key,omitempty"`
+	WriteCapacity    int64    `yaml:"writeCapacity" hcl:"write_capacity,omitempty"`
+	ReadCapacity     int64    `yaml:"readCapacity" hcl:"read_capacity,omitempty"`
+	ProjectionType   string   `yaml:"projectionType" hcl:"projection_type,omitempty"`
+	NonKeyAttributes []string `yaml:"nonKeyAttributes" hcl:"non_key_attributes,omitempty"`
 }

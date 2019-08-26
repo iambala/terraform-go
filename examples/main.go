@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/iambala/terraform-go/tfgen"
 )
@@ -17,14 +16,7 @@ func main() {
 	sqs.Tags["myTag1"] = "myTagValue1"
 	var ddb tfgen.DynamoDB
 	ddb.Name = "mytable"
-	ddb.GlobalSecondaryIndex = []tfgen.GlobalSecondaryIndex{
-		tfgen.GlobalSecondaryIndex{
-			Name: "test",
-		},
-		tfgen.GlobalSecondaryIndex{
-			Name: "test",
-		},
-	}
+
 	ddb.Attributes = []tfgen.Attribute{
 		tfgen.Attribute{
 			Name: "test",
@@ -41,8 +33,6 @@ func main() {
 
 	tf.AddResource(sqs)
 	tf.AddResource(ddb)
-	jsont, _ := json.Marshal(ddb)
-	fmt.Println(string(jsont))
 
 	myVar := tfgen.Var{
 		Name:    "region",
@@ -67,7 +57,8 @@ func main() {
 	tf.AddResource(provider)
 	tf.AddResource(account_id)
 	tf.AddResource(snssub)
-
+	fmt.Printf("%s", tf.Main.Bytes())
 	tf.SaveFile()
+
 	cleanupFile()
 }
