@@ -7,6 +7,7 @@ import (
 	"github.com/iambala/terraform-go/awsarn"
 	"github.com/iambala/terraform-go/gohcl"
 	"os"
+	"strings"
 )
 
 type tf struct {
@@ -33,20 +34,6 @@ func (t tf) AddResourceBlock(block *hclwrite.Block) {
 	if block != nil {
 		t.MainBody.AppendBlock(block)
 	}
-}
-
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-func extractResourceName(arn string) string {
-	components, err := awsarn.Parse(arn)
-	if err != nil {
-		panic(err)
-	}
-	return components.Resource
 }
 
 func (t tf) SaveFile() {
@@ -80,15 +67,15 @@ func (t tf) AddResource(resource interface{}) {
 	var body *hclwrite.Body
 	switch resource.(type) {
 	case SQS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resource.(SQS).Name})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resourceName(resource.(SQS).Name}))
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SQS), body)
 	case DynamoDB:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resource.(DynamoDB).Name})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resourceName(resource.(DynamoDB).Name}))
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(DynamoDB), body)
 	case SNS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resource.(SNS).Name})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resourceName(resource.(SNS).Name}))
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SNS), body)
 	case SnsSubscription:
@@ -105,8 +92,7 @@ func (t tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Provider), body)
 	case Route53Record:
-		name = strings.Replace(resource.(Route53Record).Name, ".", "_", -1)
-		block = t.MainBody.AppendNewBlock("aws_route53_record", []string{name})
+		block = t.MainBody.AppendNewBlock("aws_route53_record", []string{resourceName(resource.(Route53Record).Name)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Route53Record), body)
 	default:
