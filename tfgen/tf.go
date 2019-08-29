@@ -90,7 +90,7 @@ func (t Tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Provider), body)
 	case Route53Record:
-		block = t.MainBody.AppendNewBlock("aws_route53_record", []string{resourceName(resource.(Route53Record).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_route53_record", resourceName(resource.(Route53Record).Name)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Route53Record), body)
 	default:
