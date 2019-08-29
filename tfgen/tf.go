@@ -4,10 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/hashicorp/hcl2/hclwrite"
-	"github.com/iambala/terraform-go/awsarn"
 	"github.com/iambala/terraform-go/gohcl"
 	"os"
-	"strings"
 )
 
 type tf struct {
