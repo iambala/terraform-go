@@ -1,6 +1,7 @@
 package tfgen
 
 import (
+	"github.com/iambala/terraform-go/awsarn"
 	"log"
 	"regexp"
 )
