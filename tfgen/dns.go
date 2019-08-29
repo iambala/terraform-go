@@ -6,7 +6,7 @@ type Route53Record struct {
 	Type    int64  `yaml:"type" hcl:"type,omitempty"`
 	TTL     int64  `yaml:"ttl" hcl:"ttl,omitempty"`
 	Records string `yaml:"records" hcl:"records,omitempty"`
-	Alias   Alias  `yaml:"alias" hcl:"alias,block"`
+	Alias   *Alias `yaml:"alias" hcl:"alias,block"`
 }
 
 type Alias struct {
