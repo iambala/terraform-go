@@ -67,7 +67,7 @@ func (t tf) AddResource(resource interface{}) {
 	var body *hclwrite.Body
 	switch resource.(type) {
 	case SQS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resourceName(resource.(SQS).Name}))
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resourceName(resource.(SQS).Name)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SQS), body)
 	case DynamoDB:
@@ -75,7 +75,7 @@ func (t tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(DynamoDB), body)
 	case SNS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resourceName(resource.(SNS).Name}))
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resourceName(resource.(SNS).Name)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SNS), body)
 	case SnsSubscription:
