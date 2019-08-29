@@ -71,7 +71,7 @@ func (t tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SQS), body)
 	case DynamoDB:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resourceName(resource.(DynamoDB).Name}))
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resourceName(resource.(DynamoDB).Name)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(DynamoDB), body)
 	case SNS:
