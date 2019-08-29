@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-type tf struct {
+type Tf struct {
 	Main       *hclwrite.File
 	MainBody   *hclwrite.Body
 	Var        *hclwrite.File
@@ -17,8 +17,8 @@ type tf struct {
 	OutputBody *hclwrite.Body
 }
 
-func NewTf() tf {
-	var t tf
+func NewTf() Tf {
+	var t Tf
 	t.Main = hclwrite.NewEmptyFile()
 	t.MainBody = t.Main.Body()
 	t.Var = hclwrite.NewEmptyFile()
@@ -28,13 +28,13 @@ func NewTf() tf {
 	return t
 }
 
-func (t tf) AddResourceBlock(block *hclwrite.Block) {
+func (t Tf) AddResourceBlock(block *hclwrite.Block) {
 	if block != nil {
 		t.MainBody.AppendBlock(block)
 	}
 }
 
-func (t tf) SaveFile() {
+func (t Tf) SaveFile() {
 	//create and save Main.tf
 	mf, err := os.Create("main.tf")
 	check(err)
@@ -60,7 +60,7 @@ func (t tf) SaveFile() {
 	ofw.Flush()
 }
 
-func (t tf) AddResource(resource interface{}) {
+func (t Tf) AddResource(resource interface{}) {
 	var block *hclwrite.Block
 	var body *hclwrite.Body
 	switch resource.(type) {
