@@ -94,7 +94,7 @@ func (t Tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Route53Record), body)
 	case AwsCloudwatchMetricAlarm:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resourceName(resource.(AwsCloudwatchMetricAlarm).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resourceName(resource.(AwsCloudwatchMetricAlarm).AlarmName)})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 	default:
