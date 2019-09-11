@@ -65,15 +65,15 @@ func (t Tf) AddResource(resource interface{}) {
 	var body *hclwrite.Body
 	switch resource.(type) {
 	case SQS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resourceName(resource.(SQS).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sqs_queue", resource.(SQS).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SQS), body)
 	case DynamoDB:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resourceName(resource.(DynamoDB).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_dynamodb_table", resource.(DynamoDB).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(DynamoDB), body)
 	case SNS:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resourceName(resource.(SNS).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_sns_topic", resource.(SNS).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(SNS), body)
 	case SnsSubscription:
@@ -90,11 +90,11 @@ func (t Tf) AddResource(resource interface{}) {
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Provider), body)
 	case Route53Record:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_route53_record", resourceName(resource.(Route53Record).Name)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_route53_record", resource.(Route53Record).Name})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(Route53Record), body)
 	case AwsCloudwatchMetricAlarm:
-		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resourceName(resource.(AwsCloudwatchMetricAlarm).AlarmName)})
+		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resource.(AwsCloudwatchMetricAlarm).AlarmName})
 		body = block.Body()
 		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 	default:
