@@ -99,7 +99,7 @@ func (t Tf) AddResource(resource interface{}) {
 		body = block.Body()
 		for _, dimension := range resource.(AwsCloudwatchMetricAlarm).Dimensions {
 			dimensions := body.AppendNewBlock("dimensions", nil)
-			dimensionBody := bazBlock.Body()
+			dimensionBody := dimensions.Body()
 			dimensionBody.SetAttributeValue(dimension.DimensionName, cty.StringVal(dimension.Value))
 
 		}
