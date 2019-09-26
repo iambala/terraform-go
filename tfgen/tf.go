@@ -96,6 +96,7 @@ func (t Tf) AddResource(resource interface{}) {
 		gohcl.EncodeIntoBody(resource.(Route53Record), body)
 	case AwsCloudwatchMetricAlarm:
 		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resourceName(resource.(AwsCloudwatchMetricAlarm).AlarmName)})
+		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 		body = block.Body()
 		for _, dimension := range resource.(AwsCloudwatchMetricAlarm).Dimensions {
 			dimensions := body.AppendNewBlock("dimensions", nil)
@@ -103,7 +104,6 @@ func (t Tf) AddResource(resource interface{}) {
 			dimensionBody.SetAttributeValue(dimension.DimensionName, cty.StringVal(dimension.Value))
 
 		}
-		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 	default:
 		fmt.Println("error")
 	}
