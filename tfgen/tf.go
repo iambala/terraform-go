@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/hashicorp/hcl2/hclwrite"
 	"github.com/iambala/terraform-go/gohcl"
-	"github.com/zclconf/go-cty/cty"
 	"os"
 )
 
