@@ -12,8 +12,8 @@ type AwsCloudwatchMetricAlarm struct {
 	AlarmDescription        string        `yaml:"alarmDescription" hcl:"alarm_description,omitempty"`
 	InsufficientDataActions []string      `yaml:"insufficientDataActions" hcl:"insufficient_data_actions,omitempty"`
 	AlarmActions            []string      `yaml:"alarmActions" hcl:"alarm_actions,omitempty"`
-	MetricQuery             []MetricQuery `yaml:"metricQuery" hcl:"metric_query,omitempty"`
-	Dimensions              []Dimensions  `yaml:"dimensions" hcl:"dimensions,omitempty"`
+	MetricQuery             []MetricQuery `yaml:"metricQuery" hcl:"metric_query,block"`
+	Dimensions              []Dimensions  `yaml:"dimensions" hcl:"dimensions,block"`
 }
 
 type MetricQuery struct {
