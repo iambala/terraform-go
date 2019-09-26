@@ -13,7 +13,7 @@ type AwsCloudwatchMetricAlarm struct {
 	InsufficientDataActions []string      `yaml:"insufficientDataActions" hcl:"insufficient_data_actions,omitempty"`
 	AlarmActions            []string      `yaml:"alarmActions" hcl:"alarm_actions,omitempty"`
 	MetricQuery             []MetricQuery `yaml:"metricQuery" hcl:"metric_query,omitempty"`
-	Dimensions              []Dimensions  `yaml:"dimensions"`
+	Dimensions              []Dimensions  `yaml:"dimensions" hcl:"dimensions,omitempty"`
 }
 
 type MetricQuery struct {
@@ -33,6 +33,10 @@ type Metric struct {
 }
 
 type Dimensions struct {
-	DimensionName string
-	Value         string
+	LoadBalancer             string `yaml:"loadBalancer" hcl:"LoadBalancer,omitempty"`
+	TableName                string `yaml:"tableName" hcl:"TableName,omitempty"`
+	ReceivingRegion          string `yaml:"receivingRegion" hcl:"ReceivingRegion,omitempty"`
+	Operation                string `yaml:"operation" hcl:"Operation,omitempty"`
+	StreamLabel              string `yaml:"streamLabel" hcl:"StreamLabel,omitempty"`
+	GlobalSecondaryIndexName string `yaml:"globalSecondaryIndexName" hcl:"GlobalSecondaryIndexName,omitempty"`
 }

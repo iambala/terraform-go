@@ -97,12 +97,6 @@ func (t Tf) AddResource(resource interface{}) {
 	case AwsCloudwatchMetricAlarm:
 		block = t.MainBody.AppendNewBlock("resource", []string{"aws_cloudwatch_metric_alarm", resourceName(resource.(AwsCloudwatchMetricAlarm).AlarmName)})
 		body = block.Body()
-		for _, dimension := range resource.(AwsCloudwatchMetricAlarm).Dimensions {
-			dimensions := body.AppendNewBlock("dimensions", nil)
-			dimensionBody := dimensions.Body()
-			dimensionBody.SetAttributeValue(dimension.DimensionName, cty.StringVal(dimension.Value))
-
-		}
 		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 	default:
 		fmt.Println("error")
