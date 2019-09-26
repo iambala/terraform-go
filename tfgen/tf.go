@@ -104,6 +104,7 @@ func (t Tf) AddResource(resource interface{}) {
 			dimensionBody.SetAttributeValue(dimension.DimensionName, cty.StringVal(dimension.Value))
 
 		}
+		gohcl.EncodeIntoBody(resource.(AwsCloudwatchMetricAlarm), body)
 	default:
 		fmt.Println("error")
 	}
